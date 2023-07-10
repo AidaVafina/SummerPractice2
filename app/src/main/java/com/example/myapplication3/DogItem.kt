@@ -1,7 +1,6 @@
 package com.example.myapplication3
 
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
@@ -11,9 +10,9 @@ import com.example.myapplication3.databinding.ItemDogBinding
 class DogItem(
     private val binding: ItemDogBinding,
     private val glide: RequestManager,
-    private val onItemClick: (Dog) -> Unit,
+    private val onItemClick: (Int) -> Unit,
 
-) : ViewHolder(binding.root){
+    ) : ViewHolder(binding.root){
 
     private val options: RequestOptions = RequestOptions
         .diskCacheStrategyOf(DiskCacheStrategy.NONE)
@@ -29,7 +28,7 @@ class DogItem(
                 .into(image)
 
             root.setOnClickListener {
-                onItemClick(dog)
+                onItemClick(dog.id)
             }
         }
     }

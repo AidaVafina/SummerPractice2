@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
+import com.example.myapplication3.DogRepository.list
 import com.example.myapplication3.databinding.FragmentFirstBinding
 import com.example.myapplication3.databinding.FragmentPhotoBinding
 import com.example.myapplication3.databinding.FragmentSecondBinding
@@ -26,27 +28,34 @@ class PhotoFragment : Fragment(R.layout.fragment_photo) {
         Log.e("ProfileFragment", name.orEmpty())
 
         initAdapter()
-
-    }
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
     }
 
     private fun initAdapter() {
         adapter = DogAdapter(
             list = DogRepository.list,
             glide = Glide.with(this),
-            onItemClick = { dog ->
-                dog.id
-                binding?.root?.showSnackbar(dog.breed)
-
+            onItemClick = {
+                id -> findNavController().navigate(
+                R.id.action_photoFragment_to_descriptionFragment,
+                PhotoFragment.createBundleWithCountryId(id)
+                )
             }
         )
         binding?.dogs?.adapter = adapter
-        //binding?.dogs?.layoutManager = GridLayoutManager(requireContext(), 2)
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
+
     companion object{
+
+        fun createBundleWithCountryId(id: Int): Bundle {
+            val bundle = Bundle()
+            bundle.putInt("KEY", id)
+            return bundle
+        }
 
         private const val ARG_NAME = "ARG_NAME"
         private const val ARG_AGE = "ARG_AGE"

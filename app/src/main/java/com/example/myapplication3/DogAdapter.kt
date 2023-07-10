@@ -3,14 +3,13 @@ package com.example.myapplication3
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.example.myapplication3.databinding.ItemDogBinding
 
 class DogAdapter(
     private var list: List<Dog>,
     private val glide: RequestManager,
-    private val onItemClick: (Dog) -> Unit,
+    private val onItemClick: (Int) -> Unit,
 ) : RecyclerView.Adapter<DogItem>() {
 
     // создание ячейки
@@ -24,12 +23,17 @@ class DogAdapter(
                 false,
             ),
         glide = glide,
-        onItemClick = onItemClick,
+        onItemClick
         )
 
 
     override fun onBindViewHolder(holder: DogItem, position: Int) {
-        holder.onBind(list[position])
+        val dog = list[position]
+        holder.onBind(dog)
+
+        holder.itemView.setOnClickListener{
+            onItemClick(dog.id)
+        }
     }
 
     // количество элементов
