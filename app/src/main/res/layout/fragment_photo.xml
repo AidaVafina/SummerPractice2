@@ -7,62 +7,29 @@
     tools:context=".PhotoFragment">
 
     <TextView
-        android:id="@+id/tvTitle3"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="28dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="576dp"
         android:text="Photo"
         android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="190dp"
-        android:layout_height="165dp"
-        android:src="@drawable/baseline_insert_photo_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.378" />
+        app:layout_constraintVertical_bias="0.085" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="190dp"
-        android:layout_height="165dp"
-        android:layout_marginStart="204dp"
-        android:src="@drawable/baseline_insert_photo_24"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dogs"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:itemCount="8"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_dog"
+        app:layout_constraintTop_toBottomOf="@+id/title"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.378" />
+        />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="190dp"
-        android:layout_height="165dp"
-        android:layout_marginBottom="184dp"
-        android:src="@drawable/baseline_insert_photo_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="190dp"
-        android:layout_height="165dp"
-        android:src="@drawable/baseline_insert_photo_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.932"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.669" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

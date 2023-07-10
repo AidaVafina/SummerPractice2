@@ -16,10 +16,6 @@ class FirstFragment : Fragment(R.layout.fragment_first) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentFirstBinding.bind(view)
 
-        binding?.binToProfile?.setOnClickListener{
-
-        }
-
         binding?.run{
             binToSettings.setOnClickListener{
                 findNavController().navigate(
